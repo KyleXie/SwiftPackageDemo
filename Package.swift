@@ -25,6 +25,7 @@ let package = Package(
             name: "ZujuAppSync",
             dependencies: [
               .product(name: "AWSAppSync", package: "aws-mobile-appsync-sdk-ios"),],
+            path: "Sources/",
             exclude: [],
             resources: [.process("mutations.graphql")]
         ),
