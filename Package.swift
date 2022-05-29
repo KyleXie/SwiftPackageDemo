@@ -15,7 +15,6 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
       .package(
-        name: "AWSAppSync",
         url: "https://github.com/awslabs/aws-mobile-appsync-sdk-ios.git",
         .upToNextMinor(from: "3.6.1"))
     ],
@@ -24,7 +23,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "ZujuAppSync",
-            dependencies: [.product(name: "AWSAppSync", package: "AWSAppSync"),]),
+            dependencies: [
+              .product(name: "AWSAppSync", package: "aws-mobile-appsync-sdk-ios"),],
+            exclude: [],
+            resources: [.process("mutations.graphql")]
+        ),
         .testTarget(
             name: "ZujuAppSyncTests",
             dependencies: ["ZujuAppSync"]),
